@@ -1,11 +1,8 @@
-# ide
-.idea
-*.iml
-
-.target
-
 # Compiled class file
 *.class
+.idea
+.target
+*.iml
 
 # Log file
 *.log
