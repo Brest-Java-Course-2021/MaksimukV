@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DepartmentDaoJdbc.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">dao</a> &gt; <a href="index.source.html" class="el_package">com.epam.brest.dao.jdbc</a> &gt; <span class="el_source">DepartmentDaoJdbc.java</span></div><h1>DepartmentDaoJdbc.java</h1><pre class="source lang-java linenums">package com.epam.brest.dao.jdbc;
+
+import com.epam.brest.dao.DepartmentDao;
+import com.epam.brest.model.Department;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.dao.support.DataAccessUtils;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
+
+import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
+@Repository
+public class DepartmentDaoJdbc implements DepartmentDao {
+
+<span class="nc" id="L27">    private static final Logger LOGGER = LoggerFactory.getLogger(DepartmentDaoJdbc.class);</span>
+
+    @Value(&quot;${department.select}&quot;)
+    private String selectSql;
+
+    @Value(&quot;${department.create}&quot;)
+    private String createSql;
+
+    @Value(&quot;${department.update}&quot;)
+    private String updateSql;
+
+    @Value(&quot;${department.findById}&quot;)
+    private String findByIdSql;
+
+    @Value(&quot;${department.check}&quot;)
+    private String checkSql;
+
+    @Value(&quot;${department.count}&quot;)
+    private String countSql;
+
+    @Value(&quot;${department.delete}&quot;)
+    private String deleteSql;
+
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+<span class="nc" id="L52">    private RowMapper rowMapper = BeanPropertyRowMapper.newInstance(Department.class);</span>
+
+<span class="nc" id="L54">    public DepartmentDaoJdbc(DataSource dataSource) {</span>
+<span class="nc" id="L55">        this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);</span>
+<span class="nc" id="L56">    }</span>
+
+    @Override
+    public List&lt;Department&gt; findAll() {
+<span class="nc" id="L60">        LOGGER.debug(&quot;Find all departments&quot;);</span>
+<span class="nc" id="L61">        return namedParameterJdbcTemplate.query(selectSql, rowMapper);</span>
+    }
+
+    @Override
+    public Optional&lt;Department&gt; findById(Integer departmentId) {
+<span class="nc" id="L66">        LOGGER.debug(&quot;Find department by id: {}&quot;, departmentId);</span>
+<span class="nc" id="L67">        SqlParameterSource sqlParameterSource = new MapSqlParameterSource(&quot;DEPARTMENT_ID&quot;, departmentId);</span>
+        // Note: don't use queryForObject to reduce exception handling
+<span class="nc" id="L69">        List&lt;Department&gt; results = namedParameterJdbcTemplate.query(findByIdSql, sqlParameterSource, rowMapper);</span>
+<span class="nc" id="L70">        return Optional.ofNullable(DataAccessUtils.uniqueResult(results));</span>
+    }
+
+    @Override
+    public Integer create(Department department) {
+<span class="nc" id="L75">        long startTime = System.nanoTime();</span>
+<span class="nc" id="L76">        LOGGER.debug(&quot;Create department: {}&quot;, department);</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">        if (!isDepartmentNameUnique(department)) {</span>
+<span class="nc" id="L78">            LOGGER.warn(&quot;Department with the same name already exists in DB: {}&quot;, department);</span>
+<span class="nc" id="L79">            throw new IllegalArgumentException(&quot;Department with the same name already exists in DB.&quot;);</span>
+        }
+<span class="nc" id="L81">        KeyHolder keyHolder = new GeneratedKeyHolder();</span>
+<span class="nc" id="L82">        SqlParameterSource sqlParameterSource = new MapSqlParameterSource(&quot;DEPARTMENT_NAME&quot;, department.getDepartmentName());</span>
+<span class="nc" id="L83">        namedParameterJdbcTemplate.update(createSql, sqlParameterSource, keyHolder);</span>
+<span class="nc" id="L84">        Integer departmentId = Objects.requireNonNull(keyHolder.getKey()).intValue();</span>
+<span class="nc" id="L85">        department.setDepartmentId(departmentId);</span>
+<span class="nc" id="L86">        long stopTime = System.nanoTime();</span>
+<span class="nc" id="L87">        LOGGER.debug(&quot;Execution time: {}&quot;, stopTime - startTime);</span>
+<span class="nc" id="L88">        return departmentId;</span>
+    }
+
+    private boolean isDepartmentNameUnique(Department department) {
+<span class="nc bnc" id="L92" title="All 2 branches missed.">        return namedParameterJdbcTemplate.queryForObject(checkSql,</span>
+<span class="nc" id="L93">                new MapSqlParameterSource(&quot;DEPARTMENT_NAME&quot;, department.getDepartmentName()), Integer.class) == 0;</span>
+    }
+
+    @Override
+    public Integer update(Department department) {
+<span class="nc" id="L98">        LOGGER.debug(&quot;Update department: {}&quot;, department);</span>
+<span class="nc" id="L99">        SqlParameterSource sqlParameterSource =</span>
+<span class="nc" id="L100">                new MapSqlParameterSource(&quot;DEPARTMENT_NAME&quot;, department.getDepartmentName())</span>
+<span class="nc" id="L101">                        .addValue(&quot;DEPARTMENT_ID&quot;, department.getDepartmentId());</span>
+<span class="nc" id="L102">        return namedParameterJdbcTemplate.update(updateSql, sqlParameterSource);</span>
+    }
+
+    @Override
+    public Integer delete(Integer departmentId) {
+<span class="nc" id="L107">        LOGGER.debug(&quot;Delete department by id: {}&quot;, departmentId);</span>
+<span class="nc" id="L108">        return namedParameterJdbcTemplate.update(deleteSql, new MapSqlParameterSource()</span>
+<span class="nc" id="L109">                .addValue(&quot;DEPARTMENT_ID&quot;, departmentId));</span>
+    }
+
+    @Override
+    public Integer count() {
+<span class="nc" id="L114">        LOGGER.debug(&quot;count()&quot;);</span>
+<span class="nc" id="L115">        return namedParameterJdbcTemplate.queryForObject(countSql, new HashMap&lt;&gt;(), Integer.class);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
