@@ -15,8 +15,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-<!--        <module>web-app</module>-->
-<!--        <module>rest-app</module>-->
+        <module>web-app</module>
+        <module>rest-app</module>
         <module>model</module>
         <module>test-db</module>
         <module>dao-api</module>
