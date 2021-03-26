@@ -1,0 +1,5 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+model,com.epam.brest.model.constants,DepartmentConstants,3,0,0,0,1,0,1,0,1,0
+model,com.epam.brest.model,Department,60,16,10,0,9,8,10,4,5,4
+model,com.epam.brest.model,Employee,59,0,0,0,20,0,14,0,14,0
+model,com.epam.brest.model.dto,DepartmentDto,38,0,0,0,15,0,9,0,9,0

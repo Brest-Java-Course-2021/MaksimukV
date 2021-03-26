@@ -1,0 +1,4 @@
+com/epam/brest/model/Employee.class
+com/epam/brest/model/constants/DepartmentConstants.class
+com/epam/brest/model/dto/DepartmentDto.class
+com/epam/brest/model/Department.class
