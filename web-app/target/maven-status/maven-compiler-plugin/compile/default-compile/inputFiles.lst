@@ -2,3 +2,4 @@
 /home/vladislav/IdeaProjects/MaksimukV/web-app/src/main/java/com/epam/brest/service/web_app/EmployeeController.java
 /home/vladislav/IdeaProjects/MaksimukV/web-app/src/main/java/com/epam/brest/service/web_app/Application.java
 /home/vladislav/IdeaProjects/MaksimukV/web-app/src/main/java/com/epam/brest/service/web_app/HomeController.java
+/home/vladislav/IdeaProjects/MaksimukV/web-app/src/main/java/com/epam/brest/service/web_app/config/ApplicationConfig.java

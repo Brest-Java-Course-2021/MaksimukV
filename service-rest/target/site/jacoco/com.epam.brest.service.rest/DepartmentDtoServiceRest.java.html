@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DepartmentDtoServiceRest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">service-rest</a> &gt; <a href="index.source.html" class="el_package">com.epam.brest.service.rest</a> &gt; <span class="el_source">DepartmentDtoServiceRest.java</span></div><h1>DepartmentDtoServiceRest.java</h1><pre class="source lang-java linenums">package com.epam.brest.service.rest;
+
+import com.epam.brest.model.dto.DepartmentDto;
+import com.epam.brest.service.DepartmentDtoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
+
+@Service
+public class DepartmentDtoServiceRest implements DepartmentDtoService {
+
+<span class="fc" id="L16">    private static final Logger LOGGER = LoggerFactory.getLogger(DepartmentDtoServiceRest.class);</span>
+
+    private final String url;
+
+    private final RestTemplate restTemplate;
+
+<span class="fc" id="L22">    public DepartmentDtoServiceRest(String url, RestTemplate restTemplate) {</span>
+<span class="fc" id="L23">        this.url = url;</span>
+<span class="fc" id="L24">        this.restTemplate = restTemplate;</span>
+<span class="fc" id="L25">    }</span>
+
+    @Override
+    public List&lt;DepartmentDto&gt; findAllWithAvgSalary() {
+
+<span class="fc" id="L30">        LOGGER.debug(&quot;findAllWithAvgSalary()&quot;);</span>
+<span class="fc" id="L31">        ResponseEntity responseEntity = restTemplate.getForEntity(url, List.class);</span>
+<span class="fc" id="L32">        return (List&lt;DepartmentDto&gt;) responseEntity.getBody();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

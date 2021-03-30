@@ -2,5 +2,6 @@
 /home/vladislav/IdeaProjects/MaksimukV/rest-app/src/main/java/com/epam/brest/service/rest_app/exception/ErrorResponse.java
 /home/vladislav/IdeaProjects/MaksimukV/rest-app/src/main/java/com/epam/brest/service/rest_app/exception/DepartmentNotFoundException.java
 /home/vladislav/IdeaProjects/MaksimukV/rest-app/src/main/java/com/epam/brest/service/rest_app/ApplicationRest.java
+/home/vladislav/IdeaProjects/MaksimukV/rest-app/src/main/java/com/epam/brest/service/rest_app/DepartmentDtoController.java
 /home/vladislav/IdeaProjects/MaksimukV/rest-app/src/main/java/com/epam/brest/service/rest_app/VersionController.java
 /home/vladislav/IdeaProjects/MaksimukV/rest-app/src/main/java/com/epam/brest/service/rest_app/exception/CustomExceptionHandler.java
