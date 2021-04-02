@@ -4,32 +4,33 @@ import com.epam.brest.model.dto.DepartmentDto;
 import com.epam.brest.service.DepartmentDtoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.ResponseEntity;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+import static org.springframework.http.HttpMethod.GET;
+
 @Service
 public class DepartmentDtoServiceRest implements DepartmentDtoService {
 
-<span class="fc" id="L16">    private static final Logger LOGGER = LoggerFactory.getLogger(DepartmentDtoServiceRest.class);</span>
+<span class="fc" id="L18">    private static final Logger LOGGER = LoggerFactory.getLogger(DepartmentDtoServiceRest.class);</span>
 
     private final String url;
 
     private final RestTemplate restTemplate;
 
-<span class="fc" id="L22">    public DepartmentDtoServiceRest(String url, RestTemplate restTemplate) {</span>
-<span class="fc" id="L23">        this.url = url;</span>
-<span class="fc" id="L24">        this.restTemplate = restTemplate;</span>
-<span class="fc" id="L25">    }</span>
+<span class="fc" id="L24">    public DepartmentDtoServiceRest(String url, RestTemplate restTemplate) {</span>
+<span class="fc" id="L25">        this.url = url;</span>
+<span class="fc" id="L26">        this.restTemplate = restTemplate;</span>
+<span class="fc" id="L27">    }</span>
 
     @Override
     public List&lt;DepartmentDto&gt; findAllWithAvgSalary() {
 
-<span class="fc" id="L30">        LOGGER.debug(&quot;findAllWithAvgSalary()&quot;);</span>
-<span class="fc" id="L31">        ResponseEntity responseEntity = restTemplate.getForEntity(url, List.class);</span>
-<span class="fc" id="L32">        return (List&lt;DepartmentDto&gt;) responseEntity.getBody();</span>
+<span class="fc" id="L32">        LOGGER.debug(&quot;findAllWithAvgSalary()&quot;);</span>
+<span class="fc" id="L33">        return restTemplate.exchange(url, GET, null, new ParameterizedTypeReference&lt;List&lt;DepartmentDto&gt;&gt;() {}).getBody();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

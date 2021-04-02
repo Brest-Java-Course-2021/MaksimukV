@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EmployeeController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">web-app</a> &gt; <a href="index.source.html" class="el_package">com.epam.brest.service.web_app</a> &gt; <span class="el_source">EmployeeController.java</span></div><h1>EmployeeController.java</h1><pre class="source lang-java linenums">package com.epam.brest.service.web_app;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@Controller
+<span class="nc" id="L9">public class EmployeeController {</span>
+
+    /**
+     * Goto employees list page.
+     *
+     * @return view name
+     */
+    @GetMapping(value = &quot;/employees&quot;)
+    public final String employees(Model model) {
+<span class="nc" id="L18">        return &quot;employees&quot;;</span>
+    }
+
+    /**
+     * Goto edit employee page.
+     *
+     * @return view name
+     */
+    @GetMapping(value = &quot;/employee/{id}&quot;)
+    public final String gotoEditEmployeePage(@PathVariable Integer id, Model model) {
+<span class="nc" id="L28">        return &quot;employee&quot;;</span>
+    }
+
+    /**
+     * Goto new employee page.
+     *
+     * @return view name
+     */
+    @GetMapping(value = &quot;/employee/add&quot;)
+    public final String gotoAddEmployeePage(Model model) {
+<span class="nc" id="L38">        return &quot;employee&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

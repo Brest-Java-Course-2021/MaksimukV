@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.epam.brest.model.DepartmentTest" time="0.113" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.epam.brest.model.DepartmentTest" time="0.058" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="15"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="GB"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/jdk-15.0.2/lib"/>
-    <property name="sun.java.command" value="/home/vladislav/IdeaProjects/MaksimukV/model/target/surefire/surefirebooter13581299195442857277.jar /home/vladislav/IdeaProjects/MaksimukV/model/target/surefire 2021-03-30T12-32-09_795-jvmRun1 surefire5285760064941898442tmp surefire_014314494141235152242tmp"/>
+    <property name="sun.java.command" value="/home/vladislav/IdeaProjects/MaksimukV/model/target/surefire/surefirebooter7959848093430416685.jar /home/vladislav/IdeaProjects/MaksimukV/model/target/surefire 2021-04-02T18-48-51_296-jvmRun1 surefire13343185659596361145tmp surefire_06330346622561154806tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/vladislav/IdeaProjects/MaksimukV/model/target/test-classes:/home/vladislav/IdeaProjects/MaksimukV/model/target/classes:/home/vladislav/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.1/junit-jupiter-api-5.7.1.jar:/home/vladislav/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/vladislav/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/vladislav/.m2/repository/org/junit/platform/junit-platform-commons/1.7.1/junit-platform-commons-1.7.1.jar:/home/vladislav/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.1/junit-jupiter-engine-5.7.1.jar:/home/vladislav/.m2/repository/org/junit/platform/junit-platform-engine/1.7.1/junit-platform-engine-1.7.1.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/vladislav/IdeaProjects/MaksimukV/model/target/surefire/surefirebooter13581299195442857277.jar"/>
+    <property name="surefire.real.class.path" value="/home/vladislav/IdeaProjects/MaksimukV/model/target/surefire/surefirebooter7959848093430416685.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="15.0.2+7-27"/>
     <property name="user.name" value="vladislav"/>
@@ -50,6 +50,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="59.0"/>
   </properties>
-  <testcase name="getDepartmentNameSetter" classname="com.epam.brest.model.DepartmentTest" time="0.069"/>
-  <testcase name="getDepartmentNameConstructor" classname="com.epam.brest.model.DepartmentTest" time="0.003"/>
+  <testcase name="getDepartmentNameSetter" classname="com.epam.brest.model.DepartmentTest" time="0.035"/>
+  <testcase name="getDepartmentNameConstructor" classname="com.epam.brest.model.DepartmentTest" time="0.001"/>
 </testsuite>

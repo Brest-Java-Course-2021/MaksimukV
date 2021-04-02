@@ -1,3 +1,4 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-service-rest,com.epam.brest.service.rest,DepartmentDtoServiceRest,0,29,0,0,0,8,0,3,0,3
+service-rest,com.epam.brest.service.rest,DepartmentDtoServiceRest.new ParameterizedTypeReference() {...},0,6,0,0,0,1,0,1,0,1
+service-rest,com.epam.brest.service.rest,DepartmentDtoServiceRest,0,32,0,0,0,7,0,3,0,3
 service-rest,com.epam.brest.service.rest,DepartmentServiceRest,2,144,0,0,1,28,1,7,1,7
